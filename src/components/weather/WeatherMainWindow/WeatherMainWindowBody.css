@@ -1,0 +1,6 @@
+.weather-body {
+    display: flex;
+    justify-content: space-evenly;
+
+    padding: 3rem;
+}
