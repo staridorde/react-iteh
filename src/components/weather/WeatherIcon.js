@@ -7,13 +7,13 @@ export default function WeatherIcon(props) {
   return (
     <div>
       {props.weatherIconData === "Clouds" && (
-        <FontAwesomeIcon icon={faCloud} size="6x" />
+        <FontAwesomeIcon icon={faCloud} size={props.size} />
       )}
       {props.weatherIconData === "Rain" && (
-        <FontAwesomeIcon icon={faCloudRain} size="6x" />
+        <FontAwesomeIcon icon={faCloudRain} size={props.size} />
       )}
       {props.weatherIconData === "Clear" && (
-        <FontAwesomeIcon icon={faSun} size="6x" />
+        <FontAwesomeIcon icon={faSun} size={props.size} />
       )}
     </div>
   );

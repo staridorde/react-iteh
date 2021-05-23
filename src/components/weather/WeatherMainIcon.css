@@ -1,8 +1,25 @@
 .weather-icon {
-    width: 50%;
-    margin: auto;
-    padding: 8rem;
+  width: 50%;
+  margin: auto;
+  padding: 8rem;
 
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+.select-city-div {
+  position: absolute;
+  top: 0;
+  right: 15rem;
+}
+
+.select-city-dropdown {
+  padding: 0.3rem 0.7rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.06);
+  color: #f1f1f1;
+}
+
+.select-city-dropdown:focus {
+    color: black;
 }
