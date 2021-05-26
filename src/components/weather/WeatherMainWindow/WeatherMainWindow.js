@@ -8,7 +8,7 @@ export default function WeatherMainWindow(props) {
     return (
         <div className="main-window">
             <WeatherMainWindowHeader weatherData={props.weatherData[0]} />
-            <WeatherMainWindowBody weatherData={props.weatherData} />
+            <WeatherMainWindowBody weatherDataFull={props.weatherDataFull} handleRedirect={props.handleRedirect} weatherData={props.weatherData} />
         </div>
     )
 }

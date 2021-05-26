@@ -1,10 +1,21 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import WeekForecast from "./pages/week_forecast/WeekForecast";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import DayForecast from "./pages/day_forecast/DayForecast";
 
 function App() {
   const [city, setCity] = useState("belgrade");
   const [weatherData, setWeatherData] = useState([]);
+  const [weatherDataFull, setWeatherDataFull] = useState([]);
+
+  const history = useHistory();
+
+  const handleRedirect = useCallback((path, state) => {
+    return () => {
+      history.push(path, state);
+    }
+  }, [history])
 
   const cityChangeHandler = (e) => {
     setCity(e.target.options[e.target.options.selectedIndex].value);
@@ -36,6 +47,8 @@ function App() {
     const data = await response.json();
 
     console.log(data);
+
+    setWeatherDataFull(data);
 
     const weather_days = [];
 
@@ -107,14 +120,25 @@ function App() {
   }, [city]);
 
   return (
-    <div>
-      {weatherData.length !== 0 && (
-        <WeekForecast
-          weatherData={weatherData}
-          cityChangeHandler={cityChangeHandler}
-        />
-      )}
-    </div>
+
+    <Switch>
+      <Route exact path="/">
+        {weatherData.length !== 0 && (
+          <WeekForecast
+            weatherDataFull={weatherDataFull}
+            weatherData={weatherData}
+            cityChangeHandler={cityChangeHandler}
+            handleRedirect={handleRedirect}
+          />
+        )}
+      </Route>
+      <Route path="/day-forecast">
+        <DayForecast handleRedirect={handleRedirect} weatherData={weatherData} />
+      </Route>
+
+
+
+    </Switch>
   );
 }
 

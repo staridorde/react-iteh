@@ -7,7 +7,7 @@ const week_forecast = (props) => {
     return (
         <div>
             <WeatherMainIcon weatherData={props.weatherData[0]} cityChangeHandler={props.cityChangeHandler} />
-            <WeatherMainWindow weatherData={props.weatherData} />
+            <WeatherMainWindow weatherDataFull={props.weatherDataFull} handleRedirect={props.handleRedirect} weatherData={props.weatherData} />
         </div>
     )
 }
